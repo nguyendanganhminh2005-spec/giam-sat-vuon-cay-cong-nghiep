@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "De 2 - Giam sat vuon cay cong nghiep",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -100, "left": 150, "attrs": { "humidity": "45", "temperature": "28" } },
+    { "type": "wokwi-led", "id": "ledMist", "top": -90, "left": -140, "attrs": { "color": "blue", "label": "Phun suong" } },
+    { "type": "wokwi-led", "id": "ledPump", "top": -90, "left": -200, "attrs": { "color": "green", "label": "May bom" } },
+    { "type": "wokwi-led", "id": "ledFan", "top": -90, "left": -260, "attrs": { "color": "yellow", "label": "Quat" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 40, "left": -140, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 70, "left": -200, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 100, "left": -260, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [] ],
+    [ "dht1:SDA", "esp:D15", "green", [] ],
+    [ "dht1:GND", "esp:GND.1", "black", [] ],
+    [ "esp:D26", "r1:1", "blue", [] ],
+    [ "r1:2", "ledMist:A", "blue", [] ],
+    [ "ledMist:C", "esp:GND.2", "black", [] ],
+    [ "esp:D27", "r2:1", "green", [] ],
+    [ "r2:2", "ledPump:A", "green", [] ],
+    [ "ledPump:C", "esp:GND.2", "black", [] ],
+    [ "esp:D25", "r3:1", "gold", [] ],
+    [ "r3:2", "ledFan:A", "gold", [] ],
+    [ "ledFan:C", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
